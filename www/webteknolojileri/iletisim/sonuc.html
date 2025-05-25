@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Sonucu</title>
+  <link rel="stylesheet" href="styyle.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Gönderilen Bilgiler</h2>
+    <div id="sonuc"></div>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("iletisimFormu"));
+    const div = document.getElementById("sonuc");
+    if (data) {
+      div.innerHTML = `
+        <p><strong>Ad Soyad:</strong> ${data.adsoyad}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Telefon:</strong> ${data.telefon}</p>
+        <p><strong>Cinsiyet:</strong> ${data.cinsiyet}</p>
+        <p><strong>İlgi Alanları:</strong> ${data.ilgi.join(", ")}</p>
+        <p><strong>Şehir:</strong> ${data.sehir}</p>
+        <p><strong>Mesaj:</strong> ${data.mesaj}</p>
+      `;
+    } else {
+      div.innerHTML = "Form verisi bulunamadı.";
+    }
+  </script>
+</body>
+</html>

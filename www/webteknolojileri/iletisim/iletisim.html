@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>İletişim</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="styyle.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <h2>İletişim Formu</h2>
+    <form @submit.prevent="gonderForm">
+      <label>Ad Soyad:</label><br>
+      <input type="text" v-model="form.adsoyad"><br><br>
+
+      <label>Email:</label><br>
+      <input type="text" v-model="form.email"><br><br>
+
+      <label>Telefon:</label><br>
+      <input type="text" v-model="form.telefon"><br><br>
+
+      <label>Cinsiyet:</label><br>
+      <input type="radio" value="Kadın" v-model="form.cinsiyet"> Kadın
+      <input type="radio" value="Erkek" v-model="form.cinsiyet"> Erkek<br><br>
+
+      <label>İlgi Alanları:</label><br>
+      <input type="checkbox" value="Film" v-model="form.ilgi"> Film
+      <input type="checkbox" value="Spor" v-model="form.ilgi"> Spor
+      <input type="checkbox" value="Kitap" v-model="form.ilgi"> Kitap<br><br>
+
+      <label>Mesaj:</label><br>
+      <textarea v-model="form.mesaj"></textarea><br><br>
+
+      <label>Şehir:</label><br>
+      <select v-model="form.sehir">
+        <option disabled value="">Seçiniz</option>
+        <option>İstanbul</option>
+        <option>Ankara</option>
+        <option>İzmir</option>
+      </select><br><br>
+
+      <button type="submit">Gönder</button>
+      <button type="button" @click="temizleForm">Temizle</button>
+    </form>
+
+    <div v-if="hata" class="hata">{{ hata }}</div>
+  </div>
+
+  <script src="iletisim-kontrol.js"></script>
+</body>
+</html>
